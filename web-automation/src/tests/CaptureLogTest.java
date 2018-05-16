@@ -10,7 +10,6 @@ import utils.CommonFunc;
 import utils.Utilities;
 import utils.Constants;
 
-//@SuppressWarnings("unused") 
 public class CaptureLogTest implements Constants {
 	
 	@Test
