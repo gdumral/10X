@@ -1,27 +1,36 @@
 package utils;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 
 public class CommonFunc implements Constants {
 
 	public static void goTo(WebDriver driver, String baseUrl) throws InterruptedException  {
 		driver.get(baseUrl);
-		driver.manage().window().maximize();
+		driver.manage().window().fullscreen();
+	}
+	
+	public static void tearDown(WebDriver driver)
+	{
+		try {
+			driver.close();
+			driver.quit();
+		} catch(Exception e) {
+			driver.quit();
+		}
 	}
 	
 	public static void playoutLiveChannel(WebDriver driver) throws InterruptedException {
 		login(driver);
-		try {
-			openTVGuide(driver);
-		}catch(Exception e)
-		{
+//		try {
+//			openTVGuide(driver);
+//		}catch(Exception e)
+//		{
 			KeyActions.refresh(driver);
 			openTVGuide(driver);
-		}
+//		}
 		KeyActions.findAndClick(driver,By.cssSelector("div.epg-grid-program-cell.epg-grid-program-cell--live > div.epg-grid-program-cell__container > div.epg-grid-program-cell__title"));
-
-//		KeyActions.findAndClick(driver,By.cssSelector("div.epg-grid-program-cell.epg-grid-program-cell--live > div.epg-grid-program-cell__container > div.epg-grid-program-cell__title"));
 		KeyActions.findAndClick(driver,By.cssSelector("button.button.button--primary.button-with-options"));
 	}
 	

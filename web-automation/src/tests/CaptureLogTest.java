@@ -2,6 +2,7 @@ package tests;
 
 import java.io.IOException;
 
+import org.junit.After;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
@@ -11,6 +12,7 @@ import utils.Utilities;
 import utils.Constants;
 
 public class CaptureLogTest implements Constants {
+	
 	
 	@Test
 	public void openBrowser() throws InterruptedException, IOException {
@@ -23,7 +25,7 @@ public class CaptureLogTest implements Constants {
 		CommonFunc.channelSwap(driver, 100);
 		
 		Utilities.captureNetworkTrace(bmp);
-		driver.quit();	
+		CommonFunc.tearDown(driver);	
 	}	
 
 }
